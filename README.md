@@ -9,6 +9,8 @@
 This browser based web application to ...
 
 * Hi my name is Sean. I'm excited about this project because the skills we develop will be marketable in the future.
+
+* Hi, my name Robert. I'm excited/scared about this project because I've never used Git Hub before.
  
 ## Technologies
 
@@ -18,7 +20,7 @@ Technologies used for this project:
 * JavaScript
 * Bootstrap
 * ...
- 
+
 ## Content
 
 Content of the project folder:
