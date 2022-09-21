@@ -7,8 +7,16 @@
 ## General Info
 
 This browser based web application to ...
+<<<<<<< HEAD
 *Hi my name is Wilson. I am excited about this project because I am learning a new skill that will be a valuable asset in the future.
 
+=======
+
+* Hi my name is Sean. I'm excited about this project because the skills we develop will be marketable in the future.
+
+* Hi, my name Robert. I'm excited/scared about this project because I've never used Git Hub before.
+ 
+>>>>>>> b1f06ea67f1323524249b327eb9e2f253b919ece
 ## Technologies
 
 Technologies used for this project:
@@ -17,7 +25,11 @@ Technologies used for this project:
 * JavaScript
 * Bootstrap
 * ...
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> b1f06ea67f1323524249b327eb9e2f253b919ece
 ## Content
 
 Content of the project folder:
