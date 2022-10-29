@@ -11,16 +11,19 @@
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-success">
         <!-- flexbox left-->
         <div class="d-flex p-2 me-auto">
+            <!-- logo/brand -->
             <div class="">
-                <a class="navbar-brand" href="#">
-                    <img src="../images/tree.png" alt="logo" style="width: 30px;">
-                    Nutritracker
-                </a>
+                <div class="mt-1">
+                    <a class=" navbar-brand" href="#">
+                        <img src="../images/tree.png" alt="logo" style="height: 30px; margin-right: 5px;">
+                        <span class="fw-bold">Nutritracker </span>
+                    </a>
+                </div>
             </div>
+            <!-- search -->
             <div class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-dark" type="submit">Search</button>
@@ -29,6 +32,7 @@
 
         <!-- flexbox right -->
         <div class="d-flex pe-1">
+            <!-- dropdown -->
             <div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -40,6 +44,22 @@
                     <li><a class="dropdown-item" href="#">Help</a></li>
                 </ul>
             </div>
+        </div>
+    </nav>
+
+    <!-- bottom nav -->
+    <nav class="navbar fixed-bottom bg-success justify-content-evenly">
+        <div class="">
+            <button type="button" class="btn btn-dark">Home</button>
+        </div>
+        <div class="">
+            <button type="button" class="btn btn-dark">Goals</button>
+        </div>
+        <div class="">
+            <button type="button" class="btn btn-dark">Groceries</button>
+        </div>
+        <div class="">
+            <button type="button" class="btn btn-dark">Meals</button>
         </div>
     </nav>
 
