@@ -1,1 +1,16 @@
+.card {
+    width: 18rem;
+}
 
+p>img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.card-title {
+    text-align: center;
+}
