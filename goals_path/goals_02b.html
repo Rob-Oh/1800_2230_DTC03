@@ -46,6 +46,46 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
+    <div class="card">
+
+        <div class="card-body text-center">
+            <h5 class="card-title">Health Goals</h5>
+            <img src="../images/placeholer.png" class="card-img-top w-25 mb-5" alt="Health Graph">
+
+            <p class="card-text">
+            <h3>Input Weight and Goal</h3>
+            <label for="input">Please input weight:</label>
+            <input type="text" id="input" placeholder="Current lbs">
+            <input type="text" id="input" placeholder="Goal for lbs">
+            <h3>Money to save</h3>
+            <label for="input">Gain/Lose lbs a week</label>
+            <select id="select">
+                <option value="">Choose lbs a week</option>
+                <optgroup label="Gain Weight">
+                    <option value="">+2.0</option>
+                    <option value="">+1.5</option>
+                    <option value="">+1.0</option>
+                    <option value="">+0.5</option>
+                </optgroup>
+                <optgroup label="Stay Same Weight">
+                    <option value="">&nbsp;0</option>
+                </optgroup>
+                <optgroup label="Lose Weight">
+                    <option value="">-0.5</option>
+                    <option value="">-1.0</option>
+                    <option value="">-1.5</option>
+                    <option value="">-2.0</option>
+                </optgroup>
+            </select>
+            </p>
+
+            <p>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset Graph">
+            </p>
+        </div>
+
+    </div>
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
