@@ -32,7 +32,7 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./styles/style.css">
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
 </head>
 
@@ -46,46 +46,45 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
+    <div class="card">
 
-    <!-- quote -->
-    <div class="container-fluid bg-light text-dark">
-        <div class="container bg-light p-5">
-            <h1 class="display-4">Good morning, <span id="name-goes-here"></span> </h1>
-            <hr>
-            <p>Quote of the day: "Time flies like an arrow. Fruit flies like bananas."</p>
+        <div class="card-body text-center">
+            <h5 class="card-title">Health Goals</h5>
+            <img src="../images/placeholer.png" class="card-img-top w-25 mb-5" alt="Health Graph">
+
+            <p class="card-text">
+            <h3>Input Weight and Goal</h3>
+            <label for="input">Please input weight:</label>
+            <input type="text" id="input" placeholder="Current lbs">
+            <input type="text" id="input" placeholder="Goal for lbs">
+            <h3>Money to save</h3>
+            <label for="input">Gain/Lose lbs a week</label>
+            <select id="select">
+                <option value="">Choose lbs a week</option>
+                <optgroup label="Gain Weight">
+                    <option value="">+2.0</option>
+                    <option value="">+1.5</option>
+                    <option value="">+1.0</option>
+                    <option value="">+0.5</option>
+                </optgroup>
+                <optgroup label="Stay Same Weight">
+                    <option value="">&nbsp;0</option>
+                </optgroup>
+                <optgroup label="Lose Weight">
+                    <option value="">-0.5</option>
+                    <option value="">-1.0</option>
+                    <option value="">-1.5</option>
+                    <option value="">-2.0</option>
+                </optgroup>
+            </select>
+            </p>
+
+            <p>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset Graph">
+            </p>
         </div>
-    </div>
 
-    <!-- cards -->
-    <div class="card-group">
-        <div class="card">
-            <a href="./goals_path/goals_01.html">
-                <div class="card-body">
-                    <h5 class="card-title">Goals</h5>
-                    <p class="card-text"><img src="images/Weight-loss.jpg"></p>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="card">
-            <div class="card-body">
-                <a href="./groceries_path/groceries_01.html">
-                    <h5 class="card-title">Finances</h5>
-                    <p class="card-text"><img src="images/Budget.jpg"></p>
-            </div>
-            </a>
-        </div>
-
-
-        <div class="card">
-            <div class="card-body">
-                <a href="./meals_path/meals_01.html">
-                    <h5 class="card-title">Meals</h5>
-                    <p class="card-text"><img src="images/Cooking.jpg"></p>
-            </div>
-            </a>
-        </div>
     </div>
 
     <!-- our own footer goes here-->
@@ -95,8 +94,8 @@
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_TEAM99.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
 
 
     <!-- popper -->
