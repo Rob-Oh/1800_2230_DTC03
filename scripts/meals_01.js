@@ -18,7 +18,9 @@ function displayCards(collection) {
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-text').innerHTML = calories;
-                newcard.querySelector('button').onclick = () => set_food_data(hikeID, title, calories);
+                newcard.querySelector('button').onclick = () => delete_log();
+                newcard.querySelector('div').onclick = () => set_food_data(hikeID, title, calories);//equiv getElementByTagName
+
                 //give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
                 // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
@@ -32,31 +34,46 @@ function displayCards(collection) {
 }
 
 
-displayCards("logs");
-
 function set_food_data(id, food_name, calories) {
     console.log("set food data")
     localStorage.setItem('food_id', id);
     localStorage.setItem('food_name', food_name)
     localStorage.setItem('calories', calories)
+    var hikeID = localStorage.getItem("food_id");    //visible to all functions on this page
+    var food_name = localStorage.getItem("food_name");    //visible to all functions on this page
+    var calories = localStorage.getItem("calories");    //visible to all functions on this page
+    var hikeID = localStorage.getItem("food_id");    //visible to all functions on this page
+    console.log("Set food:", food_name)
 }
 
 
+
 function delete_log() {
-    console.log("delete log")
-    food_id = hikeID
-    console.log(food_id)
+    var food_name = localStorage.getItem("food_name");    //visible to all functions on this page
+    var calories = localStorage.getItem("calories");    //visible to all functions on this page
+    var hikeID = localStorage.getItem("food_id");    //visible to all functions on this page
+    console.log("Delete:", food_name)
     // db.collection("logs").doc("DC").delete()
-    db.collection("logs").where("id", "==", food_id)
+    db.collection("logs").where("id", "==", hikeID)
         .get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log("I'm here");
                 // doc.data() is never undefined for query doc snapshots
                 doc.ref.delete();
-                console.log("deleted");
+                console.log("Deleted:", food_name);
             })
         });
     alert("Item has been removed.")
 }
+
+
+
+
+
+
+displayCards("logs");
+
+
+
+
 
