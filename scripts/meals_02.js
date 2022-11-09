@@ -7,11 +7,13 @@ function displayCards(collection) {
             snap.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;        // get value of the "name" key
                 var calories = doc.data().calories;   // get value of the "details" key
+                var hikeID = doc.data().id; //gets the unique CODE field
                 let newcard = cardTemplate.content.cloneNode(true);
 
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-text').innerHTML = calories;
+                newcard.querySelector('a').onclick = () => set_food_data(hikeID, title, calories);//equiv getElementByTagName
 
                 //give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
@@ -25,4 +27,12 @@ function displayCards(collection) {
         })
 }
 
+
 displayCards("food_items");
+
+function set_food_data(id, food_name, calories) {
+    localStorage.setItem('food_id', id);
+    localStorage.setItem('food_name', food_name)
+    localStorage.setItem('calories', calories)
+}
+
