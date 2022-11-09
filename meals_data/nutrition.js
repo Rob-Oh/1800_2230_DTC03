@@ -14,13 +14,13 @@ async function getCSVdata() {
         const name = columns[1];        //gold medals
         const calories = columns[2];
         console.log(name)
-        //db.collection("countries").add({   //write to firestore
-        //    name: country,
-        //    details: details
-        //})
+        db.collection("food_items").doc(name).set({   //write to firestore
+            id: id,
+            calories: calories
+        })
 
     })
 }
 
-getCSVdata()
+// getCSVdata()
 
