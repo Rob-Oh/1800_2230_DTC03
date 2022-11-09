@@ -14,8 +14,9 @@ async function getCSVdata() {
         const name = columns[1];        //gold medals
         const calories = columns[2];
         console.log(name)
-        db.collection("food_items").doc(name).set({   //write to firestore
+        db.collection("food_items").add({   //write to firestore
             id: id,
+            name: name,
             calories: calories
         })
 
