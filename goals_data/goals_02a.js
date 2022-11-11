@@ -30,7 +30,6 @@ function Financial() {
 }
 
 function saveUserInfo() {
-    userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
     WeeklyBudget = document.getElementById('weeklyBudget').value;     //get the value of the field with id="schoolInput"
     SaveAmount = document.getElementById('saveAmount').value;       //get the value of the field with id="cityInput"
     currentUser.update({
