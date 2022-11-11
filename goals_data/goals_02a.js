@@ -2,7 +2,6 @@
 //goals 1 displays graph from goals_02a and goals_02b
 
 function Financial() {
-    console.log("check")
     let WeeklyBudget = document.getElementById("weeklyBudget").value;
     let SaveAmount = document.getElementById("saveAmount").value;
 
