@@ -9,9 +9,9 @@ async function getCSVdata() {
     const list = data.split('\n').slice(1);  //get line
     list.length = 10
     list.forEach(row => {
-        const columns = row.split(','); //get token 
-        const id = columns[0];     //country name
-        const name = columns[1];        //gold medals
+        const columns = row.split(',');
+        const id = columns[0];
+        const name = columns[1];
         const calories = columns[2];
         console.log(name)
         db.collection("food_items").add({   //write to firestore
