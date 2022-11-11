@@ -10,22 +10,20 @@ function Financial() {
             var currentUser = db.collection("users").doc(user.uid)
             var userID = user.uid;
             //get the document for current user.
-            currentUser.get()
-                .then(userDoc => {
-                    var userEmail = userDoc.data().email;
-                    db.collection("Financial").add({
-                        userID: userID,
-                        weeklybudget: WeeklyBudget,
-                        saveamount: SaveAmount
-                    }).then(() => {
-                        window.location.href = "./goals_02a.html"; //new line added
-                    })
+            currentUser.update({
+                weeklybudget: WeeklyBudget,
+                saveamount: SaveAmount
+            })
+                .then(() => {
+                    console.log("Document successfully updated!");
                 })
+
+
 
         } else {
             // No user is signed in.
         }
-    });
+    })
 }
 
 function saveUserInfo() {
