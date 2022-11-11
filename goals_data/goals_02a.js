@@ -39,3 +39,51 @@ function saveUserInfo() {
             console.log("Document successfully updated!");
         })
 }
+
+var xValues = ["Calories"];
+var calories = 0
+var yValues = [calories];
+var barColors = ["red"];
+Chart.defaults.font.size = 15;
+
+
+
+const calculate = function calculate_calories() {
+    db.collection("logs").get()
+        .then(collection => {
+            collection.forEach((doc) => {
+                calories = calories + parseInt(doc.data().calories)
+                console.log(calories)
+            })
+        })
+}
+
+console.log("Chart calories:", calories)
+calculate()
+const message = function () {
+    console.log("Chart calories:", calories)
+}
+
+
+const chart_make = function charter() {
+    console.log("Calories:", calories)
+    var yValues = [calories]
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "Today's Calories:",
+                barPercentage: 0.2,
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+}
+setTimeout(chart_make, 2000);
