@@ -1,5 +1,6 @@
 //add windows api
 //goals 1 displays graph from goals_02a and goals_02b
+var currentUser
 
 function Financial() {
     let WeeklyBudget = document.getElementById("weeklyBudget").value;
@@ -27,6 +28,7 @@ function Financial() {
 }
 
 function saveUserInfo() {
+    var currentUser = db.collection("users").doc(user.uid)
     WeeklyBudget = document.getElementById('weeklyBudget').value;     //get the value of the field with id="schoolInput"
     SaveAmount = document.getElementById('saveAmount').value;       //get the value of the field with id="cityInput"
     currentUser.update({
@@ -47,13 +49,13 @@ Chart.defaults.font.size = 15;
 
 
 const calculate = function calculate_calories() {
-    db.collection("logs").get()
-        .then(collection => {
-            collection.forEach((doc) => {
-                calories = calories + parseInt(doc.data().calories)
-                console.log(calories)
+    firebase.auth().onAuthStateChanged(user => {
+        var currentUser = db.collection("users").doc(user.uid)
+        currentUser.get()
+            .then(doc => {
+                calories = doc.data().weeklybudget
             })
-        })
+    })
 }
 
 console.log("Chart calories:", calories)
