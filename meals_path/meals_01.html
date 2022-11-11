@@ -33,6 +33,7 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -48,17 +49,11 @@
     <!-- stuff -->
 
     <!-- graph attempt -->
-    <div class="card">
-
-        <div class="card-body text-center">
-            <h5 class="card-title">Daily Calories</h5>
-            <img src="../images/graph_01.png" class="card-img-top w-25 mb-5" alt="...">
-            <p class="card-text">
-                <a class="btn btn-success" href="meals_02.html" role="button">Add Item</a>
-            </p>
-
-        </div>
+    <div id="test" style="width: 100%; height:300px ; text-align: center; margin-top: 10px;">
+        <canvas id="myChart" style="width:100%;margin:0 auto; height: 80%;"></canvas>
+        <a class="btn btn-success" href="meals_02.html" role="button">Add Item</a>
     </div>
+
 
     <div style="margin: 1rem;">
         <div class="container">
