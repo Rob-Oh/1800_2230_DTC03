@@ -16,10 +16,9 @@ function Financial() {
                     db.collection("Financial").add({
                         userID: userID,
                         weeklybudget: WeeklyBudget,
-                        saveamount: SaveAmount.
-                            serverTimestamp()
+                        saveamount: SaveAmount
                     }).then(() => {
-                        window.location.href = "thanks.html"; //new line added
+                        window.location.href = "./goals_02a.html"; //new line added
                     })
                 })
 
