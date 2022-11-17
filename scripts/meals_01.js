@@ -34,14 +34,15 @@ function delete_log() {
     var food_name = localStorage.getItem("food_name");
     var food_id = localStorage.getItem("food_id");
     console.log("Delete:", food_name)
-    db.collection("logs").where("id", "==", food_id)
+    db.collection("logs").where("id", "==", food_id).limit(1)
         .get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
+                console.log(doc.ref)
                 doc.ref.delete();
                 console.log("Deleted:", food_name);
             })
         });
-    setTimeout(() => { window.location.reload() }, 600);
+    setTimeout(() => { window.location.reload() }, 1000);
 }
 
 
