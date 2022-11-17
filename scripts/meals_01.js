@@ -1,5 +1,5 @@
 function displayCards(collection) {
-    let cardTemplate = document.getElementById("hikeCardTemplate");
+    let cardTemplate = document.getElementById("food_template");
     db.collection(collection).get()
         .then(document_array => {
             document_array.forEach(doc => {
@@ -18,7 +18,6 @@ function displayCards(collection) {
 
 
 function set_food_data(id, food_name, calories) {
-    console.log("set food data")
     localStorage.setItem('food_id', id);
     localStorage.setItem('food_name', food_name)
     localStorage.setItem('calories', calories)
@@ -33,7 +32,6 @@ function delete_log() {
     db.collection("logs").where("id", "==", food_id).limit(1)
         .get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log(doc.ref)
                 doc.ref.delete();
                 console.log("Deleted:", food_name);
             })
@@ -63,7 +61,6 @@ function graph_overall() {
         calculate()
         var yValues = [calories];
         var xValues = ["Calories"];
-        console.log("Calories:", calories)
         var yValues = [calories]
         new Chart("myChart", {
             type: "bar",
