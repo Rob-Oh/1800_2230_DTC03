@@ -1,10 +1,5 @@
-var food_id = localStorage.getItem("food_id");
-var food_name = localStorage.getItem("food_name");
-var calories = localStorage.getItem("calories");
-
-
-function get_food_details(food_id) {
-    db.collection("food_items").where("id", "==", food_id)
+function get_food_details() {
+    db.collection("food_items").where("id", "==", localStorage.getItem("food_id"))
         .get().then(query_snapshot => {
             var thisHike = query_snapshot.docs[0].data();
             let name = thisHike.name;
@@ -16,33 +11,27 @@ function get_food_details(food_id) {
 
 
 function add_item() {
-    let local_name = food_name;
-    let local_id = food_id;
-    let local_calories = calories;
-
+    var food_id = localStorage.getItem("food_id");
+    var food_name = localStorage.getItem("food_name");
+    var calories = localStorage.getItem("calories");
     db.collection("logs").add({
-        name: local_name,
-        id: local_id,
-        calories: local_calories,
+        name: food_name,
+        id: food_id,
+        calories: calories,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
-        window.location.href = "./meals_01.html"; //new line added
+        window.location.href = "./meals_01.html";
     })
 }
 
 
 function favorite() {
-    let local_name = food_name;
-    let local_id = hikeID;
-    let local_calories = calories;
-
+    var food_name = localStorage.getItem("food_name");
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             var currentUser = db.collection("users").doc(user.uid)
-            var userID = user.uid;
-            //get the document for current user.
             currentUser.update({
-                favorite_food: local_name,
+                favorite_food: food_name,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             })
             console.log("updated")
@@ -52,4 +41,4 @@ function favorite() {
 }
 
 
-get_food_details(food_id);
+get_food_details();
