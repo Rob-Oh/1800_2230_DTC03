@@ -2,6 +2,21 @@
 //goals 1 displays graph from goals_02a and goals_02b
 var currentUser
 
+
+function reset() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var currentUser = db.collection("users").doc(user.uid)
+            currentUser.update({
+                weeklybudget: firebase.firestore.FieldValue.delete(),
+                saveamount: firebase.firestore.FieldValue.delete()
+            })
+                .then(() => alert("Graph has been reset."))
+        }
+    })
+}
+
+
 function Financial() {
     let WeeklyBudget = document.getElementById("weeklyBudget").value;
     let SaveAmount = document.getElementById("saveAmount").value;
