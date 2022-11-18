@@ -17,6 +17,7 @@ function Financial() {
             })
                 .then(() => {
                     console.log("Document successfully updated!");
+                    alert("Your information has been saved!")
                 })
 
 
@@ -40,7 +41,7 @@ function saveUserInfo() {
         })
 }
 
-var xValues = ["Calories"];
+var xValues = ["Money"];
 var calories = 0
 var yValues = [calories];
 var barColors = ["red"];
@@ -73,7 +74,7 @@ const chart_make = function charter() {
         data: {
             labels: xValues,
             datasets: [{
-                label: "Today's Calories:",
+                label: "Weekly Budget",
                 barPercentage: 0.2,
                 backgroundColor: barColors,
                 data: yValues
