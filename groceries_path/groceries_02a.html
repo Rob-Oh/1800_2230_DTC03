@@ -32,10 +32,6 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
 
-    <script src="./src/bootstrap-input-spinner.js"></script>
-    <script>
-        $("input[type='number']").inputSpinner()
-    </script>
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
@@ -57,10 +53,11 @@
         <h3>Groceries List</h3>
     </div>
 
-    <div class="progress" style = "width: 80%; margin:auto;">
+    <div class="progress" style="width: 80%; margin:auto;">
         <!-- Implement JQuery to dynamically change style width, valuenow and text display-->
         <!-- progress bar preemptively deducts price of grocery items from budget-->
-        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">$ Remaining</div>
+        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0"
+            aria-valuemax="100">$ Remaining</div>
     </div>
 
     <!-- bootstrap table with add, edit, delete buttons -->
@@ -89,7 +86,8 @@
                         <!-- Call to action buttons -->
                         <ul class="list-inline m-0">
                             <li class="list-inline-item">
-                                <button type="button" class="btn btn-primary btn-sm">
+                                <button id="submit_button" type="button" class="btn btn-primary btn-sm"
+                                    onclick="saveUserInfo()">
                                     <!-- <button class="btn btn-primary btn-sm rounded-0" type="button" title="Add"> -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-bag-check" viewBox="0 0 16 16">
@@ -106,7 +104,7 @@
                                 <!-- <button class="btn btn-success btn-sm rounded-0" type="button" title="Edit">
                                     <i class="fa fa-edit"></i></button> -->
 
-                                <input type="number" />
+                                <input id="data_input" type="number" />
                             </li>
                             <li class="list-inline-item">
                                 <button type="button" class="btn btn-outline-danger btn-sm">
@@ -308,9 +306,10 @@
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+    <script src="../scripts/firebaseAPI_TEAM99.js"></script>
     <script src="../scripts/skeleton.js"></script>
     <!-- <script src="./scripts/script.js"></script> -->
+    <script src="../scripts/groceries_02a.js"></script>
 
 
     <!-- popper -->
