@@ -30,8 +30,8 @@ function delete_log() {
     var food_id = localStorage.getItem("food_id");
     console.log("Delete:", food_name)
     db.collection("logs").where("id", "==", food_id).limit(1)
-        .get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
+        .get().then((query_snapshot) => {
+            query_snapshot.forEach((doc) => {
                 doc.ref.delete();
                 console.log("Deleted:", food_name);
             })
