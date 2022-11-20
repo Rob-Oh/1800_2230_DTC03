@@ -3,28 +3,13 @@
 var currentUser
 
 
-function reset() {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            var currentUser = db.collection("users").doc(user.uid)
-            currentUser.update({
-                weeklybudget: firebase.firestore.FieldValue.delete(),
-                saveamount: firebase.firestore.FieldValue.delete()
-            })
-                .then(() => alert("Graph has been reset."))
-        }
-    })
-}
-
-
 function Financial() {
-    let WeeklyBudget = document.getElementById("weeklyBudget").value;
-    let SaveAmount = document.getElementById("saveAmount").value;
+    let WeeklyBudget = parseInt(document.getElementById("weeklyBudget").value);
+    let SaveAmount = parseInt(document.getElementById("saveAmount").value);
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             var currentUser = db.collection("users").doc(user.uid)
-            var userID = user.uid;
             //get the document for current user.
             currentUser.update({
                 weeklybudget: WeeklyBudget,
@@ -33,10 +18,8 @@ function Financial() {
                 .then(() => {
                     console.log("Document successfully updated!");
                     alert("Your information has been saved!")
+                    window.location.reload()
                 })
-
-
-
         } else {
             // No user is signed in.
         }
@@ -45,8 +28,8 @@ function Financial() {
 
 function saveUserInfo() {
     var currentUser = db.collection("users").doc(user.uid)
-    WeeklyBudget = document.getElementById('weeklyBudget').value;     //get the value of the field with id="schoolInput"
-    SaveAmount = document.getElementById('saveAmount').value;       //get the value of the field with id="cityInput"
+    WeeklyBudget = document.getElementById('weeklyBudget').value;
+    SaveAmount = document.getElementById('saveAmount').value;
     currentUser.update({
         weeklybudget: WeeklyBudget,
         saveamount: SaveAmount
@@ -56,41 +39,75 @@ function saveUserInfo() {
         })
 }
 
-var xValues = ["Money"];
-var calories = 0
-var yValues = [calories];
-var barColors = ["red"];
+function reset() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var currentUser = db.collection("users").doc(user.uid)
+            currentUser.update({
+                weeklybudget: firebase.firestore.FieldValue.delete(),
+                saveamount: firebase.firestore.FieldValue.delete()
+            })
+                .then(() => {
+                    alert("Graph has been reset.")
+                    window.location.reload()
+                })
+        }
+    })
+}
+
+
+var xValues = ["Weekly Budget", "Savings Goal", "Savings Progress"];
+var weeklyBudget = 0;
+var saveBudget = 0;
+var savingsProgress = 0;
+var yValues = [weeklyBudget, saveBudget, savingsProgress];
+var barColors = ["green", "green", "red"];
 Chart.defaults.font.size = 15;
 
 
-
-const calculate = function calculate_calories() {
+const calculateWeek = function calculate_budget() {
     firebase.auth().onAuthStateChanged(user => {
         var currentUser = db.collection("users").doc(user.uid)
         currentUser.get()
             .then(doc => {
-                calories = doc.data().weeklybudget
+                weeklyBudget = doc.data().weeklybudget
             })
     })
 }
+calculateWeek()
 
-console.log("Chart calories:", calories)
-calculate()
-const message = function () {
-    console.log("Chart calories:", calories)
+const calculateSave = function calculate_savings() {
+    firebase.auth().onAuthStateChanged(user => {
+        var currentUser = db.collection("users").doc(user.uid)
+        currentUser.get()
+            .then(doc => {
+                weeklySave = doc.data().saveamount
+            })
+    })
 }
+calculateSave()
 
+
+const calculateProgress = function calculate_progress() {
+    firebase.auth().onAuthStateChanged(user => {
+        var currentUser = db.collection("users").doc(user.uid)
+        currentUser.get()
+            .then(doc => {
+                savingsProgress = doc.data().saveamount - doc.data().weeklybudget
+            })
+    })
+}
+calculateProgress()
 
 const chart_make = function charter() {
-    console.log("Calories:", calories)
-    var yValues = [calories]
+    var yValues = [weeklyBudget, weeklySave, savingsProgress];
     new Chart("myChart", {
         type: "bar",
         data: {
             labels: xValues,
             datasets: [{
-                label: "Weekly Budget",
-                barPercentage: 0.2,
+                label: "Money", 
+                barPercentage: 0.1,
                 backgroundColor: barColors,
                 data: yValues
             }]
@@ -102,4 +119,4 @@ const chart_make = function charter() {
         }
     });
 }
-setTimeout(chart_make, 2000);
+setTimeout(chart_make, 1000);
