@@ -51,17 +51,18 @@
 
         <div class="card-body text-center">
             <h5 class="card-title">Health Goals</h5>
-            <img src="../images/placeholer.png" class="card-img-top w-25 mb-5" alt="Health Graph">
+            <canvas id="myChart" style="width:100%;margin:0 auto; height: 80%;"></canvas>
 
             <p class="card-text">
             <h3>Input Weight and Goal</h3>
+            <fieldset class="mb-3" id="weightField">
             <label for="input">Please input weight:</label>
-            <input type="text" id="input" placeholder="Current lbs">
-            <input type="text" id="input" placeholder="Goal for lbs">
-            <h3>Money to save</h3>
+            <input type="number" id="currentWeight" placeholder="Current lbs">
+            <input type="number" id="goalWeight" placeholder="Goal for lbs">
+            <h3>Weight Gain or Lose</h3>
             <label for="input">Gain/Lose lbs a week</label>
             <select id="select">
-                <option value="">Choose lbs a week</option>
+                <option value="number" id="weightGainLose">Choose lbs a week</option>
                 <optgroup label="Gain Weight">
                     <option value="">+2.0</option>
                     <option value="">+1.5</option>
@@ -79,10 +80,11 @@
                 </optgroup>
             </select>
             </p>
+            </fieldset>
 
             <p>
-                <input type="submit" value="Submit">
-                <input type="reset" value="Reset Graph">
+                <input type="submit" value="Submit" onclick="weightData()">
+                <input type="reset" value="Reset Graph" onclick="reset()">
             </p>
         </div>
 
@@ -145,9 +147,9 @@
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+    <script src="../scripts/firebaseAPI_TEAM99.js"></script>
     <script src="../scripts/skeleton.js"></script>
-    <script src="../goals_data/goals.js"></script>
+    <script src="../goals_data/goals_02b.js"></script>
     <!-- <script src="./scripts/script.js"></script> -->
 
 

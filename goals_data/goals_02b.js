@@ -1,27 +1,110 @@
-const labels = Utils.months({count: 7});
-const data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First Dataset',
-    data: [65, 59, 80, 81, 56, 55, 40],
-    backgroundColor: [
-      'rgba(255, 99, 132, 0.2)',
-      'rgba(255, 159, 64, 0.2)',
-      'rgba(255, 205, 86, 0.2)',
-      'rgba(75, 192, 192, 0.2)',
-      'rgba(54, 162, 235, 0.2)',
-      'rgba(153, 102, 255, 0.2)',
-      'rgba(201, 203, 207, 0.2)'
-    ],
-    borderColor: [
-      'rgb(255, 99, 132)',
-      'rgb(255, 159, 64)',
-      'rgb(255, 205, 86)',
-      'rgb(75, 192, 192)',
-      'rgb(54, 162, 235)',
-      'rgb(153, 102, 255)',
-      'rgb(201, 203, 207)'
-    ],
-    borderWidth: 1
-  }]
-};
+//add windows api
+//goals 1 displays graph from goals_02a and goals_02b
+var currentUser
+
+
+function weightData() {
+    let CurrentWeight = parseInt(document.getElementById("currentWeight").value);
+    let GoalWeight = parseInt(document.getElementById("goalWeight").value);
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var currentUser = db.collection("users").doc(user.uid)
+            //get the document for current user.
+            currentUser.update({
+                currentweight: CurrentWeight,
+                goalweight: GoalWeight
+            })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                    alert("Your information has been saved!")
+                    window.location.reload()
+                })
+        } else {
+            // No user is signed in.
+        }
+    })
+}
+
+
+function reset() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var currentUser = db.collection("users").doc(user.uid)
+            currentUser.update({
+                currentweight: firebase.firestore.FieldValue.delete(),
+                goalweight: firebase.firestore.FieldValue.delete()
+            })
+                .then(() => {
+                    alert("Graph has been reset.")
+                    window.location.reload()
+                })
+        }
+    })
+}
+
+
+var xValues = ["Current Weight", "Goal Weight", "Weight Progress"];
+var currentWeight = 0;
+var goalWeight = 0;
+var weightProgress = 0;
+var yValues = [currentWeight, goalWeight, weightProgress];
+var barColors = ["green", "green", "red"];
+Chart.defaults.font.size = 15;
+
+
+const calculateCurrent = function calculate_current() {
+    firebase.auth().onAuthStateChanged(user => {
+        var currentUser = db.collection("users").doc(user.uid)
+        currentUser.get()
+            .then(doc => {
+                currentWeight = doc.data().currentweight
+            })
+    })
+}
+calculateCurrent()
+
+const calculateSave = function calculate_goal() {
+    firebase.auth().onAuthStateChanged(user => {
+        var currentUser = db.collection("users").doc(user.uid)
+        currentUser.get()
+            .then(doc => {
+                goalWeight = doc.data().goalweight
+            })
+    })
+}
+calculateSave()
+
+
+// const calculateProgress = function calculate_progress() {
+//     firebase.auth().onAuthStateChanged(user => {
+//         var currentUser = db.collection("users").doc(user.uid)
+//         currentUser.get()
+//             .then(doc => {
+//                 savingsProgress = doc.data().saveamount - doc.data().weeklybudget
+//             })
+//     })
+// }
+// calculateProgress()
+
+const chart_make = function charter() {
+    var yValues = [currentWeight, goalWeight, weightProgress];
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "Lbs", 
+                barPercentage: 0.1,
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+}
+setTimeout(chart_make, 1000);
