@@ -26,18 +26,6 @@ function Financial() {
     })
 }
 
-function saveUserInfo() {
-    var currentUser = db.collection("users").doc(user.uid)
-    WeeklyBudget = document.getElementById('weeklyBudget').value;
-    SaveAmount = document.getElementById('saveAmount').value;
-    currentUser.update({
-        weeklybudget: WeeklyBudget,
-        saveamount: SaveAmount
-    })
-        .then(() => {
-            console.log("Document successfully updated!");
-        })
-}
 
 function reset() {
     firebase.auth().onAuthStateChanged(user => {
