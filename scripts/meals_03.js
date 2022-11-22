@@ -16,11 +16,6 @@ function add_item() {
     var food_amount = parseInt(document.getElementById('food_amount').value);
     var multiplied_calories = calories * Math.floor(food_amount / 100);
     var food_name = localStorage.getItem("food_name") + " " + food_amount + "g";
-    console.log(food_name)
-    console.log(multiplied_calories)
-    console.log(typeof calories)
-    console.log(typeof food_amount)
-
     db.collection("logs").add({
         name: food_name,
         id: food_id,
