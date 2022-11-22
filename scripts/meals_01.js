@@ -40,6 +40,28 @@ function delete_log() {
 }
 
 
+function update_goal() {
+    firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+
+            //go to the correct user document by referencing to the user uid
+            currentUser = db.collection("users").doc(user.uid)
+            var change_goal = document.getElementById('weight_change').value;
+            var change_value = document.getElementById('change_value').value;
+            currentUser.update({
+                goal: change_goal,
+                goal_value: change_value
+            })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                    setTimeout(() => { window.location.reload() }, 1000);
+                })
+        }
+    })
+}
+
+
 function graph_overall() {
     var calories = 0
     var goal_calories = 0
@@ -57,15 +79,34 @@ function graph_overall() {
                     var user_height = parseInt(user_doc.data().height);
                     var user_sex = user_doc.data().sex;
                     var user_activity = parseInt(user_doc.data().activity_level)
-                    // console.log(typeof user_weight)
-                    // console.log(typeof user_age)
-                    // console.log(typeof user_height)
-                    // console.log(typeof user_sex)
+                    var change_goal = user_doc.data().goal
+                    var change_value = parseInt(user_doc.data().goal_value)
+
+                    if (change_goal != null) {
+                        document.getElementById("weight_change").value = change_goal;
+                    }
+                    if (user_height != null) {
+                        document.getElementById("change_value").value = change_value;
+                    }
+
+
                     if (user_sex == "male") {
                         goal_calories = user_activity * (66.5 + (13.75 * user_weight) + (5.003 * user_height) - (6.75 * user_age))
+                        if (change_goal == "gain") {
+                            goal_calories = goal_calories + change_value
+                        }
+                        if (change_goal == "lose") {
+                            goal_calories = goal_calories - change_value
+                        }
                     }
                     if (user_sex == "female") {
                         goal_calories = user_activity * (655.1 + (9.563 * user_weight) + (1.850 * user_height) - (4.676 * user_age))
+                        if (change_goal == "gain") {
+                            goal_calories = goal_calories + change_value
+                        }
+                        if (change_goal == "lose") {
+                            goal_calories = goal_calories - change_value
+                        }
                     }
                 })
             }

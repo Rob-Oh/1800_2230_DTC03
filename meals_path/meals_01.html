@@ -55,17 +55,17 @@
         </div>
 
         <div id="dropdown" style="text-align: center;">
-            <label for="weight_change">I would like to</label>
-            <select name="weight_change" id="weight_change">
+            <span>I would like to</span>
+            <select name="weight_change" id="weight_change" onchange="update_goal()">
                 <option value="gain">Gain</option>
                 <option value="lose">Lose</option>
             </select>
-            <select name="weight_change" id="weight_change">
+            <select name="weight_change" id="change_value" onchange="update_goal()">
                 <option value="0">0</option>
-                <option value="0.5">0.5</option>
-                <option value="1">1</option>
-                <option value="1.5">1.5</option>
-                <option value="2">2</option>
+                <option value="250">0.5</option>
+                <option value="500">1</option>
+                <option value="750">1.5</option>
+                <option value="1000">2</option>
             </select>
             <span>lbs per week</span>
         </div>
