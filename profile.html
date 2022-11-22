@@ -46,7 +46,7 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
-    <div style="height:100vh;">
+    <div style="height:100vh; overflow: auto; padding-bottom: 2em;">
         <div class="container-fluid bg-light text-dark">
             <div class="container bg-light p-5">
                 <h1 class="display-4" style="text-align: center; font-weight: bold;">Good morning, <span
@@ -67,8 +67,27 @@
                         <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
                     </div>
                     <div class="form-group">
-                        <label>City</label>
+                        <label>Favorite Food</label>
                         <input type="text" id="foodInput" class="form-control" placeholder="Favorite Food">
+                    </div>
+                    <div class="form-group">
+                        <label>Weight(kg)</label>
+                        <input type="text" id="weight_input" class="form-control" placeholder="Weight">
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="text" id="age_input" class="form-control" placeholder="Age">
+                    </div>
+                    <div class="form-group">
+                        <label>Height(cm)</label>
+                        <input type="text" id="height_input" class="form-control" placeholder="Height">
+                    </div>
+                    <div>
+                        <label for="">Sex</label>
+                        <select class="form-select" id="sex_input" aria-label="Default select example">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
                     </div>
                 </fieldset>
                 <div class="d-flex justify-content-end mt-5">

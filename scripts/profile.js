@@ -35,6 +35,10 @@ function populateInfo() {
                     var userName = userDoc.data().name;
                     var userSchool = userDoc.data().school;
                     var userFave = userDoc.data().favorite_food;
+                    var user_weight = userDoc.data().user_weight;
+                    var user_age = userDoc.data().age;
+                    var user_height = userDoc.data().height;
+                    var user_sex = userDoc.data().sex
 
                     //if the data fields are not empty, then write them in to the form.
                     if (userName != null) {
@@ -45,6 +49,18 @@ function populateInfo() {
                     }
                     if (userFave != null) {
                         document.getElementById("foodInput").value = userFave;
+                    }
+                    if (user_weight != null) {
+                        document.getElementById("weight_input").value = user_weight;
+                    }
+                    if (user_age != null) {
+                        document.getElementById("age_input").value = user_age;
+                    }
+                    if (user_height != null) {
+                        document.getElementById("height_input").value = user_height;
+                    }
+                    if (user_sex != null) {
+                        document.getElementById("sex_input").value = user_sex;
                     }
                 })
         } else {
@@ -63,13 +79,22 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-    userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-    userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
-    userFave = document.getElementById('foodInput').value;       //get the value of the field with id="cityInput"
+    var userName = document.getElementById('nameInput').value;
+    var userSchool = document.getElementById('schoolInput').value;
+    var userFave = document.getElementById('foodInput').value;
+    var user_weight = document.getElementById('weight_input').value;
+    var user_age = document.getElementById('age_input').value;
+    var user_height = document.getElementById('height_input').value;
+    var user_sex = document.getElementById('sex_input').value;
+
     currentUser.update({
         name: userName,
         school: userSchool,
-        favorite_food: userFave
+        favorite_food: userFave,
+        weight: user_weight,
+        age: user_age,
+        height: user_height,
+        sex: user_sex
     })
         .then(() => {
             console.log("Document successfully updated!");
