@@ -35,7 +35,7 @@ function populateInfo() {
                     var userName = userDoc.data().name;
                     var userSchool = userDoc.data().school;
                     var userFave = userDoc.data().favorite_food;
-                    var user_weight = userDoc.data().user_weight;
+                    var user_weight = userDoc.data().weight;
                     var user_age = userDoc.data().age;
                     var user_height = userDoc.data().height;
                     var user_sex = userDoc.data().sex

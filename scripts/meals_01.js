@@ -55,16 +55,17 @@ function graph_overall() {
                     var user_weight = parseInt(user_doc.data().weight);
                     var user_age = parseInt(user_doc.data().age);
                     var user_height = parseInt(user_doc.data().height);
-                    var user_sex = user_doc.data().sex
+                    var user_sex = user_doc.data().sex;
+                    var user_activity = parseInt(user_doc.data().activity_level)
                     // console.log(typeof user_weight)
                     // console.log(typeof user_age)
                     // console.log(typeof user_height)
                     // console.log(typeof user_sex)
                     if (user_sex == "male") {
-                        goal_calories = 66.5 + (13.75 * user_weight) + (5.003 * user_height) - (6.75 * user_age)
+                        goal_calories = user_activity * (66.5 + (13.75 * user_weight) + (5.003 * user_height) - (6.75 * user_age))
                     }
                     if (user_sex == "female") {
-                        goal_calories = 655.1 + (9.563 * parseInt(user_weight)) + (1.850 * parseInt(user_height)) - (4.676 * parseInt(user_age))
+                        goal_calories = user_activity * (655.1 + (9.563 * user_weight) + (1.850 * user_height) - (4.676 * user_age))
                     }
                 })
             }
