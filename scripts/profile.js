@@ -39,6 +39,7 @@ function populateInfo() {
                     var user_age = userDoc.data().age;
                     var user_height = userDoc.data().height;
                     var user_sex = userDoc.data().sex
+                    var user_activity = userDoc.data().activity_level
 
                     //if the data fields are not empty, then write them in to the form.
                     if (userName != null) {
@@ -61,6 +62,9 @@ function populateInfo() {
                     }
                     if (user_sex != null) {
                         document.getElementById("sex_input").value = user_sex;
+                    }
+                    if (user_activity != null) {
+                        document.getElementById("activity_input").value = user_activity;
                     }
                 })
         } else {
@@ -86,6 +90,7 @@ function saveUserInfo() {
     var user_age = document.getElementById('age_input').value;
     var user_height = document.getElementById('height_input').value;
     var user_sex = document.getElementById('sex_input').value;
+    var user_activity = document.getElementById('activity_input').value;
 
     currentUser.update({
         name: userName,
@@ -94,7 +99,8 @@ function saveUserInfo() {
         weight: user_weight,
         age: user_age,
         height: user_height,
-        sex: user_sex
+        sex: user_sex,
+        activity_level: user_activity
     })
         .then(() => {
             console.log("Document successfully updated!");
