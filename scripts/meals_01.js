@@ -36,7 +36,7 @@ function delete_log() {
                 console.log("Deleted:", food_name);
             })
         });
-    setTimeout(() => { window.location.reload() }, 1000);
+    setTimeout(() => { window.location.reload() }, 1200);
 }
 
 
@@ -147,7 +147,7 @@ function graph_overall() {
         });
     }
     calculate()
-    setTimeout(chart_make, 700);
+    setTimeout(chart_make, 1200);
 }
 
 
