@@ -18,6 +18,7 @@ function insertName() {
 }
 
 
+// Fill form fields with information on user profile
 function populateInfo() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
