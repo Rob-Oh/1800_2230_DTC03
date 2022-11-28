@@ -1,25 +1,30 @@
 // Set the template then append to container
 function displayCards(collection) {
-    let cardTemplate = document.getElementById("food_template");
-    db.collection(collection).get()
-        .then(document_array => {
-            document_array.forEach(doc => {
-                var food_name = doc.data().name;
-                var calories = doc.data().calories;
-                var food_id = doc.data().id;
-                let newcard = cardTemplate.content.cloneNode(true);
-                newcard.querySelector('.card-title').innerHTML = food_name;
-                newcard.querySelector('.card-text').innerHTML = calories;
-                newcard.querySelector('button').onclick = () => delete_log();
-                newcard.querySelector('div').onclick = () => set_food_data(food_id, food_name, calories);
-                document.getElementById("food_container").appendChild(newcard);
-            })
-        })
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            console.log(user.uid);
+            let cardTemplate = document.getElementById("food_template");
+            db.collection(collection).where("user", "==", user.uid).get()
+                .then(document_array => {
+                    document_array.forEach(doc => {
+                        var food_name = doc.data().name;
+                        var calories = doc.data().calories;
+                        var food_id = doc.data().id;
+                        let newcard = cardTemplate.content.cloneNode(true);
+                        newcard.querySelector('.card-title').innerHTML = food_name;
+                        newcard.querySelector('.card-text').innerHTML = calories;
+                        newcard.querySelector('button').onclick = () => delete_log();
+                        newcard.querySelector('div').onclick = () => set_food_data(food_id, food_name, calories);
+                        document.getElementById("food_container").appendChild(newcard);
+                    })
+                })
+        }
+    })
 }
 
 
 // Set the local storage data
-function set_food_data(id, food_name, calories) {
+function set_food_data(id, food_name, calories, user_id) {
     localStorage.setItem('food_id', id);
     localStorage.setItem('food_name', food_name)
     localStorage.setItem('calories', calories)
@@ -29,17 +34,22 @@ function set_food_data(id, food_name, calories) {
 
 // Read the local storage data to select which item to delete from collection
 function delete_log() {
-    var food_name = localStorage.getItem("food_name");
-    var food_id = localStorage.getItem("food_id");
-    console.log("Delete:", food_name)
-    db.collection("logs").where("id", "==", food_id).limit(1)
-        .get().then((query_snapshot) => {
-            query_snapshot.forEach((doc) => {
-                doc.ref.delete();
-                console.log("Deleted:", food_name);
-            })
-        });
-    setTimeout(() => { window.location.reload() }, 1200);
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            console.log(user.uid);
+            var food_name = localStorage.getItem("food_name");
+            var food_id = localStorage.getItem("food_id");
+            console.log("Delete:", food_name)
+            db.collection("logs").where("user", "==", user.uid).where("id", "==", food_id).limit(1)
+                .get().then((query_snapshot) => {
+                    query_snapshot.forEach((doc) => {
+                        doc.ref.delete();
+                        console.log("Deleted:", food_name);
+                    })
+                });
+            setTimeout(() => { window.location.reload() }, 1200);
+        }
+    })
 }
 
 
