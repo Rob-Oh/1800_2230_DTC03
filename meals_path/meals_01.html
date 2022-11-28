@@ -57,22 +57,25 @@
             <a class="btn btn-success" href="meals_02.html" role="button">Add Item</a>
         </div>
 
-        <!-- Update goal dropdowns -->
+        <!-- Update goal dropdowns and button-->
         <div id="dropdown" style="text-align: center;">
             <span>I would like to</span>
-            <select name="weight_change" id="weight_change" onchange="update_goal()">
+            <select name="weight_change" id="weight_change">
                 <option value="gain">Gain</option>
                 <option value="lose">Lose</option>
             </select>
-            <select name="weight_change" id="change_value" onchange="update_goal()">
+            <select name="weight_change" id="change_value">
                 <option value="0">0</option>
                 <option value="250">0.5</option>
                 <option value="500">1</option>
                 <option value="750">1.5</option>
                 <option value="1000">2</option>
             </select>
-            <span>lbs per week</span>
+            <span>lbs per week </span>
+            <span style="text-align: center; display:block; margin-top: 0.4em;"><button onclick="update_goal()">Set
+                    goal</button></span>
         </div>
+
 
         <!-- Container for template -->
         <div style="margin: 1rem; ">
