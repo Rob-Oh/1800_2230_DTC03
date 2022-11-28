@@ -46,17 +46,17 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <!-- stuff -->
-
-    <!-- graph attempt -->
+    <!-- Bootstrap card containing graph and input buttons-->
     <div class="card">
-
         <div class="card-body text-center">
             <h5 class="card-title">Financial Goals</h5>
+
+            <!-- Synchronous graph based on input data -->
             <div id="test" style="width: 100%; height:300px ; text-align: center; margin-top: 10px;">
                 <canvas id="myFinancialChart" style="width:100%;margin:0 auto; height: 80%;"></canvas>
             </div>
 
+            <!-- Input field for buttons -->
             <fieldset class="mb-3" id="financialField">
                 <p class="card-text">
                 <h3>Weekly Grocery Bill</h3>
@@ -68,13 +68,15 @@
                 </p>
             </fieldset>
 
+            <!-- Buttons to submit and delete data in users collection -->
             <p>
                 <input type="submit" value="Submit" onclick="Financial()">
                 <input type="reset" value="Reset Graph" onclick="reset()">
             </p>
         </div>
-
     </div>
+
+    
     <!-- our own footer goes here-->
     <!-- <nav id="footerPlaceholder"></nav> -->
     <nav class="navbar sticky-bottom bg-success justify-content-evenly" id="bot_nav">
