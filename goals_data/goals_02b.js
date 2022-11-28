@@ -16,7 +16,6 @@ function weightData() {
                 goalweight: GoalWeight
             })
                 .then(() => {
-                    console.log("Document successfully updated!");
                     alert("Your information has been saved!")
                     window.location.reload()
                 })
@@ -76,16 +75,16 @@ const calculateSave = function calculate_goal() {
 calculateSave()
 
 
-// const calculateProgress = function calculate_progress() {
-//     firebase.auth().onAuthStateChanged(user => {
-//         var currentUser = db.collection("users").doc(user.uid)
-//         currentUser.get()
-//             .then(doc => {
-//                 savingsProgress = doc.data().saveamount - doc.data().weeklybudget
-//             })
-//     })
-// }
-// calculateProgress()
+const calculateWeightProgress = function calculate_weightProgress() {
+    firebase.auth().onAuthStateChanged(user => {
+        var currentUser = db.collection("users").doc(user.uid)
+        currentUser.get()
+            .then(doc => {
+                weightProgress = doc.data().currentweight - doc.data().goalweight
+            })
+    })
+}
+calculateWeightProgress()
 
 const chart_make = function charter() {
     var yValues = [currentWeight, goalWeight, weightProgress];
