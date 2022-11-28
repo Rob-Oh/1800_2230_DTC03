@@ -135,7 +135,6 @@ function graph_overall() {
 
     // Initialize the graph
     function chart_make() {
-        calculate()
         console.log("Goal calories:", goal_calories)
         var yValues = [calories, goal_calories];
         var xValues = ["Calories", "Goal"];
