@@ -1,3 +1,4 @@
+// Set the template then append to container
 function displayCards(collection) {
     let cardTemplate = document.getElementById("food_template");
     db.collection(collection).get()
@@ -17,6 +18,7 @@ function displayCards(collection) {
 }
 
 
+// Set the local storage data
 function set_food_data(id, food_name, calories) {
     localStorage.setItem('food_id', id);
     localStorage.setItem('food_name', food_name)
@@ -25,6 +27,7 @@ function set_food_data(id, food_name, calories) {
 }
 
 
+// Read the local storage data to select which item to delete from collection
 function delete_log() {
     var food_name = localStorage.getItem("food_name");
     var food_id = localStorage.getItem("food_id");
@@ -40,12 +43,10 @@ function delete_log() {
 }
 
 
+// Update weight goals based on dropdown menu information
 function update_goal() {
     firebase.auth().onAuthStateChanged(user => {
-        // Check if user is signed in:
         if (user) {
-
-            //go to the correct user document by referencing to the user uid
             currentUser = db.collection("users").doc(user.uid)
             var change_goal = document.getElementById('weight_change').value;
             var change_value = document.getElementById('change_value').value;
@@ -62,18 +63,21 @@ function update_goal() {
 }
 
 
+// Create the graph
 function graph_overall() {
     var calories = 0
     var goal_calories = 0
     var barColors = ["red", "green"];
     Chart.defaults.font.size = 15;
 
-
+    // The logic behind the y-values on the graph
     function calculate() {
+        // Calculate the goal calories value
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 var currentUser = db.collection("users").doc(user.uid)
                 currentUser.get().then(user_doc => {
+                    // Data retrieved from values in user profile
                     var user_weight = parseInt(user_doc.data().weight);
                     var user_age = parseInt(user_doc.data().age);
                     var user_height = parseInt(user_doc.data().height);
@@ -81,7 +85,6 @@ function graph_overall() {
                     var user_activity = parseInt(user_doc.data().activity_level)
                     var change_goal = user_doc.data().goal
                     var change_value = parseInt(user_doc.data().goal_value)
-
                     if (change_goal != null) {
                         document.getElementById("weight_change").value = change_goal;
                     }
@@ -89,7 +92,7 @@ function graph_overall() {
                         document.getElementById("change_value").value = change_value;
                     }
 
-
+                    // Formulae are based on Basal Metabolic Rate multiplied by activity
                     if (user_sex == "male") {
                         goal_calories = user_activity * (66.5 + (13.75 * user_weight) + (5.003 * user_height) - (6.75 * user_age))
                         if (change_goal == "gain") {
@@ -111,6 +114,7 @@ function graph_overall() {
                 })
             }
         })
+        // Calculate the current calories value
         db.collection("logs").get()
             .then(collection => {
                 collection.forEach((doc) => {
@@ -119,7 +123,7 @@ function graph_overall() {
             })
     }
 
-
+    // Initialize the graph
     function chart_make() {
         calculate()
         console.log("Goal calories:", goal_calories)
@@ -146,10 +150,14 @@ function graph_overall() {
             }
         });
     }
+
+
+    // Call functions
     calculate()
     setTimeout(chart_make, 1200);
 }
 
 
+// Call functions
 graph_overall();
 displayCards("logs");

@@ -1,4 +1,5 @@
-function get_food_details() {
+// Set the page information to match previous page selection
+function set_food_details() {
     db.collection("food_items").where("id", "==", localStorage.getItem("food_id"))
         .get().then(query_snapshot => {
             var thisHike = query_snapshot.docs[0].data();
@@ -10,6 +11,7 @@ function get_food_details() {
 }
 
 
+// Add to the logs collection information from local storage
 function add_item() {
     var food_id = localStorage.getItem("food_id");
     var calories = parseInt(localStorage.getItem("calories"));
@@ -27,6 +29,7 @@ function add_item() {
 }
 
 
+// Set current food item to user favorite
 function favorite() {
     var food_name = localStorage.getItem("food_name");
     firebase.auth().onAuthStateChanged(user => {
@@ -43,4 +46,4 @@ function favorite() {
 }
 
 
-get_food_details();
+set_food_details();

@@ -1,3 +1,4 @@
+// Set the local storage data
 function set_food_data(id, food_name, calories) {
     localStorage.setItem('food_id', id);
     localStorage.setItem('food_name', food_name)
@@ -5,9 +6,9 @@ function set_food_data(id, food_name, calories) {
 }
 
 
+// Set the template then append to container
 function displayCards(collection) {
     let cardTemplate = document.getElementById("hikeCardTemplate");
-
     db.collection(collection).get()
         .then(snap => {
             snap.forEach(doc => {
@@ -24,4 +25,5 @@ function displayCards(collection) {
 }
 
 
+// Call functions
 displayCards("food_items");
