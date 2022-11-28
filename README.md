@@ -6,7 +6,7 @@
 
 ## General Info
 
-This browser based web application to ...
+This is a browser based web application to help users balance finances, nutrition, and weight goals with ease.
 
 * Hi my name is Wilson. I am excited about this project because I am learning a new skill that will be a valuable asset in the future.
 
@@ -18,10 +18,11 @@ This browser based web application to ...
 
 Technologies used for this project:
 
-* HTML, CSS
+* HTML
+* CSS
 * JavaScript
 * Bootstrap
-* ...
+* Firebase
 
 ## Content
 
@@ -29,9 +30,12 @@ Content of the project folder:
 
 ```
  Top level of project folder: 
-├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
-└── README.md
+├── .gitignore              # Git ignore file
+├── pre.html                # landing HTML file, this is what users see when you come to url
+├── main.html               # Homepage
+├── login.html              # Login page
+├── profile.html            # User profile page
+└── README.md               # README markdown file
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
