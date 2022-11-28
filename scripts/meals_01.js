@@ -122,15 +122,15 @@ function graph_overall() {
                         }
                     }
                 })
+                // Calculate the current calories value
+                db.collection("logs").where("user", "==", user.uid).get()
+                    .then(collection => {
+                        collection.forEach((doc) => {
+                            calories = calories + parseInt(doc.data().calories)
+                        })
+                    })
             }
         })
-        // Calculate the current calories value
-        db.collection("logs").get()
-            .then(collection => {
-                collection.forEach((doc) => {
-                    calories = calories + parseInt(doc.data().calories)
-                })
-            })
     }
 
     // Initialize the graph
