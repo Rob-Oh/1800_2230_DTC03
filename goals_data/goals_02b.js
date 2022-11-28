@@ -88,7 +88,7 @@ calculateWeightProgress()
 
 const chart_make = function charter() {
     var yValues = [currentWeight, goalWeight, weightProgress];
-    new Chart("myChart", {
+    new Chart("myHealthChart", {
         type: "bar",
         data: {
             labels: xValues,

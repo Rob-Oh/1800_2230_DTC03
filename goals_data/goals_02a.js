@@ -88,8 +88,8 @@ const calculateProgress = function calculate_progress() {
 calculateProgress()
 
 const chart_make = function charter() {
-    var yValues = [weeklyBudget, weeklySave, savingsProgress];
-    new Chart("myChart", {
+    var yValues = [weeklyBudget, saveBudget, savingsProgress];
+    new Chart("myFinancialChart", {
         type: "bar",
         data: {
             labels: xValues,
