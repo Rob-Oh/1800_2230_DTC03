@@ -22,7 +22,7 @@ Technologies used for this project:
 * CSS
 * JavaScript
 * Bootstrap
-* Firebase
+* Firebase and Firestore
 
 ## Content
 
@@ -51,13 +51,13 @@ It has the following subfolders and files:
     /groceries_02a.html         # html page
     /grocieies_02b.html         # html page 
 ├── images                  # images folder
-    /Budget.jpg                 #
-    /Cooking.jpg                #
-    /placeholder.png            #
-    /store_1.jpg                #
-    /store_2.jpg                #
-    /tree.png                   #
-    /Weight-loss.jpg            #
+    /Budget.jpg                 # image
+    /Cooking.jpg                # image
+    /placeholder.png            # image
+    /store_1.jpg                # image
+    /store_2.jpg                # image
+    /tree.png                   # image
+    /Weight-loss.jpg            # image
 ├── meals_data              # meals_path csv processing folder
     /foods.csv                  # csv file for processed food data from canadian government
     /nutrition.html             # html page used for console
@@ -68,6 +68,7 @@ It has the following subfolders and files:
     /meals_03.html              # html page
 ├── scripts                 # General javascript folder
     /authentication.js          # integrated firebase authentication
+    /firebaseAPI_TEAM99.js      # firebase global variables and initialization
     /groceries_02a.js           # groceries_02a.html code
     /main.js                    # main.html code
     /meals_01.js                # meals_01.html code
@@ -83,12 +84,18 @@ It has the following subfolders and files:
     /template.html              # html template
 
 Firebase hosting files: 
-├── .firebaserc...
+├── .firebase
+ /hosting..cache
+├── .firebaserc
+├── 404.html
+├── firebase.json
+├── firestore.indexes.json
+├── firestore.rules
+└── storage.rules
 
 
 ```
 
-Tips for file naming files and folders:
+## Acknowledgements
 
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
+* <a href="https://getbootstrap.com/">Bootstrap</a>
