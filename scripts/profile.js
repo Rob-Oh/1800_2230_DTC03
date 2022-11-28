@@ -1,72 +1,63 @@
+// Global variable: current user
+var currentUser
+
+
+// Insert user name
 function insertName() {
     firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
         if (user) {
-            // Do something for the currently logged-in user here: 
             console.log(user.uid);
             console.log(user.displayName);
             user_Name = user.displayName;
-
-            //method #1:  insert with html only
-            //document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-            //method #2:  insert using jquery
-            $("#name-goes-here").text(user_Name); //using jquery
+            $("#name-goes-here").text(user_Name);
 
         } else {
-            // No user is signed in.
+            $("#name-goes-here").text("Guest");
         }
     });
 }
-insertName(); //run the function
 
-var currentUser
 
 function populateInfo() {
     firebase.auth().onAuthStateChanged(user => {
-        // Check if user is signed in:
         if (user) {
-
-            //go to the correct user document by referencing to the user uid
             currentUser = db.collection("users").doc(user.uid)
-            //get the document for current user.
-            currentUser.get()
-                .then(userDoc => {
-                    //get the data fields of the user
-                    var userName = userDoc.data().name;
-                    var userSchool = userDoc.data().school;
-                    var userFave = userDoc.data().favorite_food;
-                    var user_weight = userDoc.data().weight;
-                    var user_age = userDoc.data().age;
-                    var user_height = userDoc.data().height;
-                    var user_sex = userDoc.data().sex
-                    var user_activity = userDoc.data().activity_level
+            currentUser.get().then(userDoc => {
+                var userName = userDoc.data().name;
+                var userSchool = userDoc.data().school;
+                var userFave = userDoc.data().favorite_food;
+                var user_weight = userDoc.data().weight;
+                var user_age = userDoc.data().age;
+                var user_height = userDoc.data().height;
+                var user_sex = userDoc.data().sex
+                var user_activity = userDoc.data().activity_level
 
-                    //if the data fields are not empty, then write them in to the form.
-                    if (userName != null) {
-                        document.getElementById("nameInput").value = userName;
-                    }
-                    if (userSchool != null) {
-                        document.getElementById("schoolInput").value = userSchool;
-                    }
-                    if (userFave != null) {
-                        document.getElementById("foodInput").value = userFave;
-                    }
-                    if (user_weight != null) {
-                        document.getElementById("weight_input").value = user_weight;
-                    }
-                    if (user_age != null) {
-                        document.getElementById("age_input").value = user_age;
-                    }
-                    if (user_height != null) {
-                        document.getElementById("height_input").value = user_height;
-                    }
-                    if (user_sex != null) {
-                        document.getElementById("sex_input").value = user_sex;
-                    }
-                    if (user_activity != null) {
-                        document.getElementById("activity_input").value = user_activity;
-                    }
-                })
+                //if the data fields are not empty, then write them in to the form.
+                if (userName != null) {
+                    document.getElementById("nameInput").value = userName;
+                }
+                if (userSchool != null) {
+                    document.getElementById("schoolInput").value = userSchool;
+                }
+                if (userFave != null) {
+                    document.getElementById("foodInput").value = userFave;
+                }
+                if (user_weight != null) {
+                    document.getElementById("weight_input").value = user_weight;
+                }
+                if (user_age != null) {
+                    document.getElementById("age_input").value = user_age;
+                }
+                if (user_height != null) {
+                    document.getElementById("height_input").value = user_height;
+                }
+                if (user_sex != null) {
+                    document.getElementById("sex_input").value = user_sex;
+                }
+                if (user_activity != null) {
+                    document.getElementById("activity_input").value = user_activity;
+                }
+            })
         } else {
             // No user is signed in.
             console.log("No user is signed in");
@@ -74,14 +65,15 @@ function populateInfo() {
     });
 }
 
-//call the function to run it 
-populateInfo();
 
+// Edit user form fields
 function editUserInfo() {
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
 }
 
+
+// Save user form information
 function saveUserInfo() {
     var userName = document.getElementById('nameInput').value;
     var userSchool = document.getElementById('schoolInput').value;
@@ -92,6 +84,7 @@ function saveUserInfo() {
     var user_sex = document.getElementById('sex_input').value;
     var user_activity = document.getElementById('activity_input').value;
 
+    // Update user document fields
     currentUser.update({
         name: userName,
         school: userSchool,
@@ -108,3 +101,8 @@ function saveUserInfo() {
 
     document.getElementById('personalInfoFields').disabled = true;
 }
+
+
+// Call the functions
+insertName();
+populateInfo();
