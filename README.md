@@ -40,8 +40,8 @@ Content of the project folder:
 It has the following subfolders and files:
 ├── .git                    # git repo folder
 ├── goals_data              # goals_path javascript folder
-    /goals_02a.js               # goals_02a.html code
-    /goals_02b.js               # goals_0b.html code
+    /goals_02a.js               # goals_02a.html js
+    /goals_02b.js               # goals_0b.html js
 ├── goals_path              # goals_path html folder
     /goals_01.html              # html page
     /goals_02a.html             # html page
@@ -69,12 +69,12 @@ It has the following subfolders and files:
 ├── scripts                 # General javascript folder
     /authentication.js          # integrated firebase authentication
     /firebaseAPI_TEAM99.js      # firebase global variables and initialization
-    /groceries_02a.js           # groceries_02a.html code
-    /main.js                    # main.html code
-    /meals_01.js                # meals_01.html code
-    /meals_02.js                # meals_02.html code
-    /meals_03.js                # meals_03.html code
-    /profile.js                 # profile.html code
+    /groceries_02a.js           # groceries_02a.html js
+    /main.js                    # main.html js
+    /meals_01.js                # meals_01.html js
+    /meals_02.js                # meals_02.html js
+    /meals_03.js                # meals_03.html js
+    /profile.js                 # profile.html js
     /skeleton.js                # top and bottom navbar loading, used on all pages
 ├── styles                  # general css folder
     /styles.css                 # css for general user
