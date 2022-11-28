@@ -87,9 +87,9 @@ const calculateProgress = function calculate_progress() {
 }
 calculateProgress()
 
-const chart_make = function charter() {
-    var yValues = [weeklyBudget, weeklySave, savingsProgress];
-    new Chart("myChart", {
+const chart_FinancialMake = function charter() {
+    var yValues = [weeklyBudget, saveBudget, savingsProgress];
+    new Chart("myFinancialChart", {
         type: "bar",
         data: {
             labels: xValues,
@@ -107,4 +107,4 @@ const chart_make = function charter() {
         }
     });
 }
-setTimeout(chart_make, 1000);
+setTimeout(chart_FinancialMake, 1000);

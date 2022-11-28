@@ -63,7 +63,7 @@ const calculateCurrent = function calculate_current() {
 }
 calculateCurrent()
 
-const calculateSave = function calculate_goal() {
+const calculateHealthProgress = function calculate_goal() {
     firebase.auth().onAuthStateChanged(user => {
         var currentUser = db.collection("users").doc(user.uid)
         currentUser.get()
@@ -72,7 +72,7 @@ const calculateSave = function calculate_goal() {
             })
     })
 }
-calculateSave()
+calculateHealthProgress()
 
 
 const calculateWeightProgress = function calculate_weightProgress() {
@@ -86,9 +86,9 @@ const calculateWeightProgress = function calculate_weightProgress() {
 }
 calculateWeightProgress()
 
-const chart_make = function charter() {
+const chart_HealthMake = function charter() {
     var yValues = [currentWeight, goalWeight, weightProgress];
-    new Chart("myChart", {
+    new Chart("myHealthChart", {
         type: "bar",
         data: {
             labels: xValues,
@@ -106,4 +106,4 @@ const chart_make = function charter() {
         }
     });
 }
-setTimeout(chart_make, 1000);
+setTimeout(chart_HealthMake, 1000);
