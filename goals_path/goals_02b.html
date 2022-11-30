@@ -47,30 +47,32 @@
 
     <!-- the body of your page goes here -->
     <!-- Bootstrap card containing graph and input buttons-->
-    <div class="card">
-        <div class="card-body text-center">
-            <h5 class="card-title">Health Goals</h5>
+    <div style="height: 100vh; overflow: auto;">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Health Goals</h5>
 
-            <!-- Synchronous graph based on input data -->
-            <canvas id="myHealthChart" style="width: 308px;;margin:0 auto; height: 239px;"></canvas>
-            
-            <!-- Button Titles -->
-            <p class="card-text">
-            <h3>Input Weight and Goal</h3>
+                <!-- Synchronous graph based on input data -->
+                <canvas id="myHealthChart" style="width: 308px;;margin:0 auto; height: 239px;"></canvas>
+                
+                <!-- Button Titles -->
+                <p class="card-text">
+                    <h3>Input Weight and Goal</h3>
 
-            <!-- Input field for buttons -->
-            <fieldset class="mb-3" id="weightField">
-            <label for="input">Please input weight:</label>
-            <input type="number" id="currentWeight" placeholder="Current lbs">
-            <input type="number" id="goalWeight" placeholder="Goal for lbs">
-            </p>
-            </fieldset>
+                    <!-- Input field for buttons -->
+                    <fieldset class="mb-3" id="weightField">
+                    <label for="input">Please input weight:</label>
+                    <input type="number" id="currentWeight" placeholder="Current lbs">
+                    <input type="number" id="goalWeight" placeholder="Goal for lbs">
+                </p>
+                </fieldset>
 
-            <!-- Buttons to submit and delete data in users collection -->
-            <p>
-                <input type="submit" value="Submit" onclick="weightData()">
-                <input type="reset" value="Reset Graph" onclick="reset()">
-            </p>
+                <!-- Buttons to submit and delete data in users collection -->
+                <p>
+                    <input type="submit" value="Submit" onclick="weightData()">
+                    <input type="reset" value="Reset Graph" onclick="reset()">
+                </p>
+            </div>
         </div>
     </div>
 
