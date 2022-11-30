@@ -7,6 +7,7 @@ function saveUserInfo() {
         })
             .then(() => {
                 console.log("Document successfully updated!");
+                setTimeout(window.location.reload(), 1200)
             })
     }
     )
@@ -22,6 +23,7 @@ function clear_item() {
         })
             .then(() => {
                 console.log("Document successfully updated!");
+                setTimeout(window.location.reload(), 1200)
             })
     }
     )
@@ -36,10 +38,8 @@ function populate_span() {
             document.getElementById("amount").innerHTML = food_amount
             console.log(user_doc)
         })
+    })
 
-
-    }
-    )
 }
 
 
