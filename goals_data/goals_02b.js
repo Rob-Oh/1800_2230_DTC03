@@ -92,7 +92,7 @@ const calculateWeightProgress = function calculate_weightProgress() {
         var currentUser = db.collection("users").doc(user.uid)
         currentUser.get()
             .then(doc => {
-                weightProgress = doc.data().goalweight - doc.data().currentweight
+                weightDifference = doc.data().goalweight - doc.data().currentweight
             })
     })
 }
