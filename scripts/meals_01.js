@@ -39,8 +39,9 @@ function delete_log() {
             console.log(user.uid);
             var food_name = localStorage.getItem("food_name");
             var food_id = localStorage.getItem("food_id");
+            var calories = parseInt(localStorage.getItem("calories"));
             console.log("Delete:", food_name)
-            db.collection("logs").where("user", "==", user.uid).where("id", "==", food_id).limit(1)
+            db.collection("logs").where("user", "==", user.uid).where("id", "==", food_id).where("calories", "==", calories).limit(1)
                 .get().then((query_snapshot) => {
                     query_snapshot.forEach((doc) => {
                         doc.ref.delete();
