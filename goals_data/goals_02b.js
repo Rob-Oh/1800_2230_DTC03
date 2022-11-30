@@ -48,15 +48,15 @@ function reset() {
 // The following code below is used to create the chart
 
 // Creates the x-axis labels
-var xValues = ["Current Weight", "Goal Weight", "Weight Progress"];
+var xValues = ["Current Weight", "Goal Weight", "Weight Difference"];
 
 // Stores the variables in the yValues of the x-axis in order
-var yValues = [currentWeight, goalWeight, weightProgress];
+var yValues = [currentWeight, goalWeight, weightDifference];
 
 // Gloablizes the variables required for the chart
 var currentWeight = 0;
 var goalWeight = 0;
-var weightProgress = 0;
+var weightDifference = 0;
 
 // Sets the color and font size for the graph
 var barColors = ["green", "green", "red"];
@@ -92,7 +92,7 @@ const calculateWeightProgress = function calculate_weightProgress() {
         var currentUser = db.collection("users").doc(user.uid)
         currentUser.get()
             .then(doc => {
-                weightProgress = doc.data().currentweight - doc.data().goalweight
+                weightProgress = doc.data().goalweight - doc.data().currentweight
             })
     })
 }
@@ -100,7 +100,7 @@ calculateWeightProgress()
 
 // Creates the chart from given values and stored data
 const chart_HealthMake = function charter() {
-    var yValues = [currentWeight, goalWeight, weightProgress];
+    var yValues = [currentWeight, goalWeight, weightDifference];
     new Chart("myHealthChart", {
         type: "bar",
         data: {

@@ -50,15 +50,15 @@ function reset() {
 // The following code below is used to create the chart
 
 // Creates the x-axis labels
-var xValues = ["Weekly Budget", "Savings Goal", "Savings Progress"];
+var xValues = ["Weekly Budget", "Savings Goal", "Amount Saved"];
 
 // Stores the variables in the yValues of the x-axis in order
-var yValues = [weeklyBudget, weeklySave, savingsProgress];
+var yValues = [weeklyBudget, weeklySave, savingsAmount];
 
 // Gloablizes the variables required for the chart
 var weeklyBudget = 0;
 var weeklySave = 0;
-var savingsProgress = 0;
+var savingsAmount = 0;
 // Sets the color and font size for the graph
 var barColors = ["green", "green", "red"];
 Chart.defaults.font.size = 15;
@@ -101,7 +101,7 @@ calculateProgress()
 
 // Creates the chart from given values and stored data
 const chart_FinancialMake = function charter() {
-    var yValues = [weeklyBudget, weeklySave, savingsProgress];
+    var yValues = [weeklyBudget, weeklySave, savingsAmount];
     new Chart("myFinancialChart", {
         type: "bar",
         data: {
