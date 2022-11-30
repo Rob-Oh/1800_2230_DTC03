@@ -93,7 +93,7 @@ const calculateProgress = function calculate_progress() {
         var currentUser = db.collection("users").doc(user.uid)
         currentUser.get()
             .then(doc => {
-                savingsProgress = doc.data().saveamount - doc.data().weeklybudget
+                savingsAmount = doc.data().saveamount - doc.data().weeklybudget
             })
     })
 }
