@@ -31,7 +31,10 @@
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
-
+    <script src="./src/bootstrap-input-spinner.js"></script>
+    <script>
+        $("input[type='number']").inputSpinner()
+    </script>
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
@@ -53,11 +56,18 @@
         <h3>Groceries List</h3>
     </div>
 
-    <div class="progress" style="width: 80%; margin:auto;">
-        <!-- Implement JQuery to dynamically change style width, valuenow and text display-->
-        <!-- progress bar preemptively deducts price of grocery items from budget-->
-        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0"
-            aria-valuemax="100">$ Remaining</div>
+    <div class="card">
+        <div class="card-body text-center">
+            <h6 class="card-title"> Weekly Budget </h6>
+            <div class="progress">
+                <!-- Implement JQuery to dynamically change style width, valuenow and text display-->
+                <!-- progress bar preemptively deducts price of grocery items from budget-->
+                <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="45" aria-valuemin="0"
+                    aria-valuemax="100">
+                </div>
+            </div>
+            $ Remaining : <span id="balance-goes-here"> balance </span> / <span id="net_budget-goes-here">budget</span>
+        </div>
     </div>
 
     <!-- bootstrap table with add, edit, delete buttons -->
@@ -72,7 +82,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Item Name</th>
                     <th scope="col">Average Cost</th>
-                    <th scope="col">number of items</th>
+                    <!--get pricing from csv or api-->
+                    <th scope="col">Count</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -106,6 +117,7 @@
 
                                 <input id="data_input" type="number" />
                             </li>
+
                             <li class="list-inline-item">
                                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="clear_item()">
                                     <!-- <button class="btn btn-danger btn-sm rounded-0" type="button" title="Delete"> -->
